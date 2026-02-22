@@ -11,6 +11,8 @@ func main() {
 
 	commands := getCommands()
 
+	config := config{}
+
 	for {
 		fmt.Println()
 		fmt.Print("Pokedex > ")
@@ -28,7 +30,7 @@ func main() {
 			fmt.Print("Unknown Command")
 		}
 
-		err := command.callback()
+		err := command.callback(&config)
 		if err != nil {
 			fmt.Print(err)
 		}
