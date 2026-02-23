@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func GetLocationAreas(url *string) (locationAreas, error) {
+func GetLocationAreas(url *string) (LocationAreas, string, error) {
 	pageURL := baseURL + "location-area/"
 	if url != nil {
 		pageURL = *url
@@ -13,16 +13,16 @@ func GetLocationAreas(url *string) (locationAreas, error) {
 
 	res, err := http.Get(pageURL)
 	if err != nil {
-		return locationAreas{}, err
+		return LocationAreas{}, pageURL, err
 	}
 	defer res.Body.Close()
 
-	var output locationAreas
+	var output LocationAreas
 	decoder := json.NewDecoder(res.Body)
 	err = decoder.Decode(&output)
 	if err != nil {
-		return locationAreas{}, err
+		return LocationAreas{}, pageURL, err
 	}
 
-	return output, nil
+	return output, pageURL, nil
 }
