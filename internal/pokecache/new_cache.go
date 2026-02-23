@@ -11,7 +11,7 @@ func NewCache(interval time.Duration) Cache {
 		entries: make(map[string]cacheEntry),
 	}
 
-	go reapLoop(&cache, time.Minute)
+	go reapLoop(&cache, interval)
 
 	return cache
 }
