@@ -11,8 +11,8 @@ type cliCommand struct {
 }
 
 type config struct {
-	Previous string
-	Next     string
+	Previous *string
+	Next     *string
 }
 
 func cleanInput(text string) []string {
