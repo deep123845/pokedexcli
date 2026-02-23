@@ -4,6 +4,9 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"time"
+
+	"github.com/deep123845/pokedexcli/internal/pokecache"
 )
 
 func main() {
@@ -11,7 +14,10 @@ func main() {
 
 	commands := getCommands()
 
-	config := config{}
+	cache := pokecache.NewCache(time.Minute)
+	config := config{
+		Cache: &cache,
+	}
 
 	for {
 		fmt.Println()

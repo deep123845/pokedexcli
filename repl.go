@@ -2,6 +2,8 @@ package main
 
 import (
 	"strings"
+
+	"github.com/deep123845/pokedexcli/internal/pokecache"
 )
 
 type cliCommand struct {
@@ -13,6 +15,7 @@ type cliCommand struct {
 type config struct {
 	Previous *string
 	Next     *string
+	Cache    *pokecache.Cache
 }
 
 func cleanInput(text string) []string {
