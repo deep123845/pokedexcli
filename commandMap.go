@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func commandMap(c *config) error {
+func commandMap(c *config, _ []string) error {
 	url := c.Next
 
 	output, err := c.pokeapiClient.GetLocations(url)
@@ -22,7 +22,7 @@ func commandMap(c *config) error {
 	return nil
 }
 
-func commandMapb(c *config) error {
+func commandMapb(c *config, _ []string) error {
 	url := c.Previous
 
 	output, err := c.pokeapiClient.GetLocations(url)

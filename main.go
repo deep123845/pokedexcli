@@ -36,7 +36,8 @@ func main() {
 			fmt.Print("Unknown Command")
 		}
 
-		err := command.callback(config)
+		args := cleanedText[1:]
+		err := command.callback(config, args)
 		if err != nil {
 			fmt.Print(err)
 		}
