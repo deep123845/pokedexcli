@@ -34,6 +34,7 @@ func main() {
 		command, ok := commands[word]
 		if !ok {
 			fmt.Print("Unknown Command")
+			continue
 		}
 
 		args := cleanedText[1:]
