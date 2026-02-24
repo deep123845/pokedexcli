@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/deep123845/pokedexcli/internal/pokecache"
+	"github.com/deep123845/pokedexcli/internal/pokeapi"
 )
 
 func main() {
@@ -14,9 +14,9 @@ func main() {
 
 	commands := getCommands()
 
-	cache := pokecache.NewCache(time.Minute)
-	config := config{
-		Cache: &cache,
+	pokeClient := pokeapi.NewClient(5*time.Second, 5*time.Minute)
+	config := &config{
+		pokeapiClient: pokeClient,
 	}
 
 	for {
@@ -36,7 +36,7 @@ func main() {
 			fmt.Print("Unknown Command")
 		}
 
-		err := command.callback(&config)
+		err := command.callback(config)
 		if err != nil {
 			fmt.Print(err)
 		}

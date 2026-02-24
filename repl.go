@@ -3,7 +3,7 @@ package main
 import (
 	"strings"
 
-	"github.com/deep123845/pokedexcli/internal/pokecache"
+	"github.com/deep123845/pokedexcli/internal/pokeapi"
 )
 
 type cliCommand struct {
@@ -13,9 +13,9 @@ type cliCommand struct {
 }
 
 type config struct {
-	Previous *string
-	Next     *string
-	Cache    *pokecache.Cache
+	pokeapiClient pokeapi.Client
+	Previous      *string
+	Next          *string
 }
 
 func cleanInput(text string) []string {
